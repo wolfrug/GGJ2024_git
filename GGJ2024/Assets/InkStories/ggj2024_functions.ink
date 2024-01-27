@@ -12,6 +12,9 @@ VAR attemptsLeft = 4
 
 VAR confidence = 100
 VAR betConfidence = 0
+VAR maxBet = 100
+
+LIST characters = NoCharacter, Player, Rival
 
 ===function SetRandomRumourRoom()===
 ~rumourRoom = (R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16, R17, R18, R19, R20, R21, R22, R23, R24, R25, R26, R27, R28, R29, R30, R31, R32, R33, R34, R35, R36)
@@ -30,6 +33,16 @@ VAR betConfidence = 0
 }
 }
 ~return roomPayOut
+
+===function EliminateOverlappingRooms(list1, list2)
+~temp overlap = list1^list2
+~eliminatedRooms+=LIST_INVERT(overlap)
+
+===function CountRoomsRemaining()===
+~return LIST_COUNT(RoomsRemaining())
+
+===function RoomsRemaining()===
+~return (R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16, R17, R18, R19, R20, R21, R22, R23, R24, R25, R26, R27, R28, R29, R30, R31, R32, R33, R34, R35, R36) - eliminatedRooms
 
 ===function EliminateRoomsIfGuaranteedEmpty(room)
 {not (ContainsRumourRoom(room)):
@@ -122,21 +135,27 @@ VAR betConfidence = 0
 }
 {eliminatedRooms?ContainedRooms(R_Red):
 ~eliminatedRooms+=R_Red
+~eliminatedRooms+=R_Black
 }
 {eliminatedRooms?ContainedRooms(R_Black):
 ~eliminatedRooms+=R_Black
+~eliminatedRooms+=R_Red
 }
 {eliminatedRooms?ContainedRooms(R_Odd):
 ~eliminatedRooms+=R_Odd
+~eliminatedRooms+=R_Even
 }
 {eliminatedRooms?ContainedRooms(R_Even):
 ~eliminatedRooms+=R_Even
+~eliminatedRooms+=R_Odd
 }
 {eliminatedRooms?ContainedRooms(R_1to18):
 ~eliminatedRooms+=R_1to18
+~eliminatedRooms+=R_19to36
 }
 {eliminatedRooms?ContainedRooms(R_19to36):
 ~eliminatedRooms+=R_19to36
+~eliminatedRooms+=R_1to18
 }
 // If the other two are already in, the third is guaranteed not to be a thing
 {LIST_COUNT(eliminatedRooms^(R_First12, R_Second12, R_Third12))>1:
@@ -152,7 +171,7 @@ VAR betConfidence = 0
 ~remainingRooms -= rumourRoom
 ~temp randomRoomToEliminate = LIST_RANDOM(remainingRooms)
 ~eliminatedRooms += randomRoomToEliminate
-~return randomRoomToEliminate
+//~return randomRoomToEliminate
 
 ===function EliminateAllGatherRooms()===
 ~eliminatedRooms+=(R_First12, R_Second12, R_Third12, R_1to18, R_Even, R_Red, R_Black, R_Odd, R_19to36, R_TopRow, R_MiddleRow, R_BottomRow)
@@ -208,21 +227,67 @@ VAR betConfidence = 0
 ===function SelectRoom(room)===
 CustomButton({room})
 
+===function Portrait(character)===
+SET_STORY_IMAGE(Portrait, {character})
+~temp name = character
+{character:
+-NoCharacter:
+~name = ""
+-Player:
+~name = "Motley"
+-Rival:
+~name = "Pan"
+}
+SET_STORY_TEXT(Name, {name})
 
-===AdjustBet(->returnLocation)
-[Confidence left: {confidence}, Confidence bet: {betConfidence}]
-+ {confidence >=10} [Increase bet by 10.]
+===function Say(character)===
+{Portrait(character)}
+SET_TEXTBOX(TextBox_{character})
+
+===function Background(background, name)===
+SET_STORY_IMAGE(Background, {background})
+SET_STORY_TEXT(LocationName, {name})
+
+
+==SimulateRun(makeRivalRooms)
+~temp cornerRooms = (R_First12, R_Second12, R_Third12, R_1to18, R_Even, R_Red, R_Black, R_Odd, R_19to36, R_TopRow, R_MiddleRow, R_BottomRow)
+
+- (loop)
+~temp randomRoom = LIST_RANDOM(cornerRooms)
+{EliminateRoomsIfGuaranteedEmpty(randomRoom)}
+{ContainsRumourRoom(randomRoom):
+{BonusRoomEliminationOnCorrectGuess()}
+}
+~cornerRooms-=eliminatedRooms
+~attemptsLeft--
+{attemptsLeft>1:
+->loop
+-else:
+{makeRivalRooms:
+~rivalRemainingRooms = (R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16, R17, R18, R19, R20, R21, R22, R23, R24, R25, R26, R27, R28, R29, R30, R31, R32, R33, R34, R35, R36) - eliminatedRooms
+}
+->done(makeRivalRooms)
+}
+
+=done(makeRivalRooms)
+{makeRivalRooms:
+~eliminatedRooms = ()
+~attemptsLeft = 4
+}
+->->
+
+===AdjustBet
+SET_STORY_TEXT(ConfidenceAmount, {confidence}<br>{betConfidence} [Max: {maxBet}])
++ [INTERACTABLE({confidence >=10 && betConfidence<maxBet}) {SelectRoom("Add10")}Increase bet by 10.]
 ~betConfidence += 10
 ~confidence -= 10
-+ {betConfidence>=10} [Decrease bet by 10.]
++ [INTERACTABLE({betConfidence>=10}) {SelectRoom("Remove10")}Decrease bet by 10.]
 ~betConfidence-=10
 ~confidence+=10
-+ {betConfidence>0} [Clear bets.]
++ [INTERACTABLE({betConfidence>0}) {SelectRoom("ClearBets")}Clear bets.]
 ~confidence+=betConfidence
 ~betConfidence = 0
-
-- ->returnLocation
-
+- ->AdjustBet
 
 ===GoToRoom(->continuePoint)
 //Use: ->GoToRoom(->continuePoint)
@@ -243,5 +308,5 @@ CustomButton({room})
 }
 
 =addRoom(targetRoom, ->continuePoint)
-+ {not (eliminatedRooms?targetRoom)} [{SelectRoom(targetRoom)} {targetRoom}!]
++ [INTERACTABLE({not (eliminatedRooms?targetRoom)}){SelectRoom(targetRoom)} {targetRoom}!]
 ->continuePoint(targetRoom)

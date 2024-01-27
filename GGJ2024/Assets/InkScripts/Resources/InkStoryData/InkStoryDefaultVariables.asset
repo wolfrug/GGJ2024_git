@@ -24,4 +24,10 @@ MonoBehaviour:
   - variableName: SET_STORY_TEXT
   - variableName: CustomButton
   m_sprites: []
-  m_prefabs: []
+  m_prefabs:
+  - id: TextBox_Rival
+    prefab: {fileID: 4767027710511448164, guid: e5ad77caf13dad746938b0e65f306d39, type: 3}
+  - id: TextBox_Player
+    prefab: {fileID: 2236062166164031699, guid: 0b04ec8981d18934c8d3127f8973b328, type: 3}
+  - id: TextBox_Demon
+    prefab: {fileID: 8595358211192642352, guid: 2afac2a06ef54664f8fc1692c7ea90e1, type: 3}

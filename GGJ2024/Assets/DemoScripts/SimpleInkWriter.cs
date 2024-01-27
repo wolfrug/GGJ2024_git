@@ -43,7 +43,10 @@ namespace InkEngine {
                 if (!string.IsNullOrWhiteSpace(currentLine.displayText.Trim ())) {
                     SpawnTextObject (currentLine);
                     m_dialogueShownEvent.Invoke (currentLine);
-                };
+                }
+                else {
+                    CurrentDialogBoxSimple.m_canContinue = true;
+                }
                 yield return new WaitUntil (() => CurrentDialogBoxSimple.m_canContinue);
                 if (CurrentDialogBoxSimple.HasContinueButton) {
                     CurrentDialogBoxSimple.m_canContinue = false;
@@ -116,7 +119,8 @@ namespace InkEngine {
             // Destroy EVERYTHING
             selectedButton.interactable = false;
             foreach ((InkChoiceLine, Button) set in allButtons) {
-                Destroy(set.Item2.gameObject);
+                set.Item2.gameObject.SetActive(false);
+                Destroy(set.Item2.gameObject, 1f);
                 /*if (set.Item2 != selectedButton) {
                     set.Item2.gameObject.SetActive (false);
                 }*/
