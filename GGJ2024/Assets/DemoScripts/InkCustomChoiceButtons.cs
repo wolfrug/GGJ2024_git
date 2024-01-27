@@ -146,5 +146,14 @@ namespace InkEngine {
             }
         }
 
+        [NaughtyAttributes.Button]
+        void PopulateListAutomatically(){
+            // This populates the list of buttons with a selection of all children of this object - remember to change the name
+            foreach (Button target in this.GetComponentsInChildren<Button>()){
+                CustomInkChoiceButton newButton = new CustomInkChoiceButton(new InkFunctionEvent("CustomButton",new string[]{target.gameObject.name}, ArgumentRequirements.EXACTLY, null), target);
+                m_customButtons.Add(newButton);
+            }
+        }
+
     }
 }

@@ -113,12 +113,13 @@ namespace InkEngine {
             m_waitingOnOptionPress = false;
             InvokeDialogueEvents (optionButton.choiceText);
             PlayChoice (optionButton.choice);
-            // Make the selected button uninteractable but stay behind, hide all the others
+            // Destroy EVERYTHING
             selectedButton.interactable = false;
             foreach ((InkChoiceLine, Button) set in allButtons) {
-                if (set.Item2 != selectedButton) {
+                Destroy(set.Item2.gameObject);
+                /*if (set.Item2 != selectedButton) {
                     set.Item2.gameObject.SetActive (false);
-                }
+                }*/
             }
         }
         public void PauseWriter (bool pause = true) {
