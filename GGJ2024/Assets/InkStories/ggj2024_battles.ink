@@ -51,19 +51,32 @@ already laughing!
 {currentTarget:
 
 -Dracula:
+{Dracula_Battle<2:
+{Say(Rival)} Let's see what we can do with little old Vlad here!.
 
+{Say(Dracula)} “Vait! Vhat am I doing here?”
+
+{Say(Dracula)}“Vhy do I feel like you are going to start mocking my accent?”
+}
 ->Dracula_Battle
 
 -Astaroth:
-
+{Astaroth_Battle<2:
+{Say(Player)} This is the real thing, so I better be on my toes! You don't know what's coming for you, Astaroth!
+}
 ->Astaroth_Battle
 
 -Naberius:
-
+{Portrait(Naberius)}
+{Naberius_Battle<2:
+Naberius approaches. Two out of three of his heads ignore you.
+}
 ->Naberius_Battle
 
 -Byleth:
-
+{Byleth_Battle<2:
+You wonder if this is a good idea. The cat will be a fierce foe. But! You have a lord to amuse...
+}
 ->Byleth_Battle
 
 }
@@ -100,6 +113,9 @@ He does not look amused. Ack and alack...
 
 A small smile plays on his lips as he remembers some of your quips. Success..?
 
+- Amused:
+He seems amused. That's good.
+
 -VeryAmused:
 
 He practically beams, a lion's hair's breadth from laughing. So close to success!
@@ -129,13 +145,6 @@ Be as it may, your job is not yet done. Another dignitary is on their way to att
 }
 
 ==Dracula_Battle
-{Dracula_Battle<2:
-{Say(Rival)} Let's see what we can do with little old Vlad here!.
-
-{Say(Dracula)} “Vait! Vhat am I doing here?”
-
-{Say(Dracula)}“Vhy do I feel like you are going to start mocking my accent?”
-}
 
 {->round_1|->endBattle}
 
@@ -144,7 +153,7 @@ Be as it may, your job is not yet done. Another dignitary is on their way to att
 {Say(Player)} Now, I should think of the perfect insult that will amuse my lord. Hmmm!
 
 * [Stupid jest.]
-
+PLAY_SFX(SFX_BOO)
 "Dracula, more like Dragula am I right?" Don't be gauche. They're demons, not Americans and that sort of humour won't get you anywhere.  
 
 ~bossMirth--
@@ -188,7 +197,7 @@ Pan smirks at you across the throne room, and you know you are done for. After a
 ~rivalBossFavor++
 
 - else:
-
+PLAY_SFX(SFX_BOO)
 Pan starts off with a dark quip about impaling people. It's a bit strong for the crowd, they haven't warmed up yet. Too bad. So sad.
 
 }
@@ -206,9 +215,7 @@ Dracula raises a glass to his host with a gracious smile.
 ->InsultBattle.endBattle
 
 ==Astaroth_Battle
-{Astaroth_Battle<2:
-{Say(Player)} This is the real thing, so I better be on my toes! You don't know what's coming for you, Astaroth!
-}
+
 
 {->round_1|->round_2|->round_3|->endBattle}
 
@@ -221,7 +228,7 @@ You try to think of what you learned about Astaroth in the beginning...
 * [Stupid jest.]
 
 You make an underhanded comment about Asteroth's personal hygiene. Those jokes always work. Surely?
-
+PLAY_SFX(SFX_BOO)
 ~bossMirth--
 
 ~yourBossFavor--
@@ -261,7 +268,7 @@ Your rival expounds on the threads of fate that weave us all together, and how e
 ~rivalBossFavor++
 
 - else:
-
+PLAY_SFX(SFX_BOO)
 Your rival makes a derivative pun about cats and balls of yarn. A lone demon claps awkwardly from the back of the crowd as she takes her parting bow.
 
 }
@@ -275,7 +282,7 @@ Your rival makes a derivative pun about cats and balls of yarn. A lone demon cla
 It is not over yet! Astaroth shifts uncomfortably, trying to remain dignified.
 
 * [Stupid jest.]
-
+PLAY_SFX(SFX_BOO)
 Make an ill-conceived joke about Asteroth being a math nerd. The numerous math nerds in the crowd are less than impressed.
 
 ~bossMirth--
@@ -317,7 +324,7 @@ Your rival expounds on the virtues of working with one's hands, and suggests tha
 ~rivalBossFavor++
 
 - else:
-
+PLAY_SFX(SFX_BOO)
 Your rival starts a mildly diverting tangent on knitting needles, but loses her train of thought halfway through and gets tangled up in her own words. Unfortunate.
 
 }
@@ -331,7 +338,7 @@ Your rival starts a mildly diverting tangent on knitting needles, but loses her 
 The audience is drawing to a close. Astaroth is desperately trying to keep his cool.
 
 * [Stupid jest.]
-
+PLAY_SFX(SFX_BOO)
 You draw an unfavourable comparison between the size of the crown on Asteroth's head, and other body parts that they may or may not possess. The crowd doesn't get it.
 
 ~bossMirth--
@@ -369,7 +376,7 @@ Your rival weaves together a touching, heartfelt tale about the lonely demons wh
 ~rivalBossFavor++
 
 - else:
-
+PLAY_SFX(SFX_BOO)
 Your rival tells a generic joke to a smattering of polite laughter. You turn to one side to hide your smirk.
 
 }
@@ -386,10 +393,6 @@ Astaroth walks away, their face an expressionless mask.
 
 ==Naberius_Battle
 
-{Portrait(Naberius)}
-{Naberius_Battle<2:
-Naberius approaches. Two out of three of his heads ignore you.
-}
 {->round_1|->round_2|->round_3|->endBattle}
 
 =round_1
@@ -399,7 +402,7 @@ Naberius approaches. Two out of three of his heads ignore you.
 You consider which head to direct your insult at.
 
 * [Stupid jest.]
-
+PLAY_SFX(SFX_BOO)
 Make a silly joke about Naberius' hoarse voice, and suggest he should spend less time debating, and more time gargling.
 
 ~bossMirth--
@@ -437,7 +440,7 @@ There are many reasons why demons travel to the mortal realm, and in Pan's hands
 ~rivalBossFavor++
 
 - else:
-
+PLAY_SFX(SFX_BOO)
 Your rival starts off with a Cerberus allusion and Is quickly silenced by booing. This crowd does NOT like being compared to Tartarus. You make a mental note.
 
 }
@@ -451,7 +454,7 @@ Your rival starts off with a Cerberus allusion and Is quickly silenced by booing
 Naberius's facade of dignity is beginning to crack!
 
 * [Stupid jest.]
-
+PLAY_SFX(SFX_BOO)
 {Say(Player)} "Here boy, fetch!"
 
 ~bossMirth--
@@ -489,7 +492,7 @@ Your rival has a nigh limitless supply of quips about the various objects one ca
 ~rivalBossFavor++
 
 - else:
-
+PLAY_SFX(SFX_BOO)
 Pan's jibes start poorly, raise to passable in the middle, and then fall flat with all the grace of a popped balloon. Bad joke or just a tough crowd. Both.  Yes, both.
 
 }
@@ -503,7 +506,7 @@ Pan's jibes start poorly, raise to passable in the middle, and then fall flat wi
 He is wavering, he is about to crack. Only one head refuses to look away.
 
 * [Stupid jest.]
-
+PLAY_SFX(SFX_BOO)
 Make a snide comment about Naberius' canine attributes and suggest he is in need of a dog treat.
 
 ~bossMirth--
@@ -543,7 +546,7 @@ Your rival takes all the elements of the story that you would have mocked, and t
 ~rivalBossFavor++
 
 - else:
-
+PLAY_SFX(SFX_BOO)
 Pan makes a sad joke about fleas. To think, this is the person you compete with. 
 
 }
@@ -561,9 +564,6 @@ Naberius walks away with his proverbial tail between his legs.
 ==Byleth_Battle
 
 {Portrait(Byleth)}
-{Byleth_Battle<2:
-You wonder if this is a good idea. The cat will be a fierce foe. But! You have a lord to amuse...
-}
 
 {->round_1|->round_2|->round_3|->endBattle}
 
@@ -574,7 +574,7 @@ You wonder if this is a good idea. The cat will be a fierce foe. But! You have a
 Byleth looks at you, haughty and imperious.
 
 * [Stupid jest.]
-
+PLAY_SFX(SFX_BOO)
 {Say(Player)} "Have you heard the joke about the cat and the hairball? Anyone? Nope?"
 
 ~bossMirth--
@@ -614,7 +614,7 @@ You rival winks at the crowd, and embarks on one of the lewdest, wildest jokes y
 ~rivalBossFavor++
 
 - else:
-
+PLAY_SFX(SFX_BOO)
 Your rival's joke veers dangerously close to the brink of silliness, and then teeters abruptly over the edge of absurdity. You flinch in sympathy.
 
 }
@@ -628,7 +628,7 @@ Your rival's joke veers dangerously close to the brink of silliness, and then te
 The cat harrumphs and shakes himself. Maybe you've gotten under his skin, despite it all?
 
 * [Stupid jest.]
-
+PLAY_SFX(SFX_BOO)
 Make some asinine jest about cat litter. I mean really even you are embarrassed, he only looks like a cat.
 
 ~bossMirth--
@@ -666,7 +666,7 @@ Your rival turns the subject matter into music, playing the attention of the cro
 ~rivalBossFavor++
 
 - else:
-
+PLAY_SFX(SFX_BOO)
 Alas, your rivals riposte is less music to the ears, and more like the yowling of tomcats. Ouch.
 
 }
@@ -680,7 +680,7 @@ Alas, your rivals riposte is less music to the ears, and more like the yowling o
 It looks like the demon has had enough. He is about to leave!
 
 * [Stupid jest.]
-
+PLAY_SFX(SFX_BOO)
 {Say(Player)} "Heaven may have a choir of angels, but we have a cacophony of cats! Or...cat. Singular."
 
 ~bossMirth--
@@ -718,7 +718,7 @@ Whatever story you spun, she does it better, with far fewer cat puns and far mor
 ~rivalBossFavor++
 
 - else:
-
+PLAY_SFX(SFX_BOO)
 Your rivals joke is as tone-deaf as Byleth himself.
 
 }
@@ -734,7 +734,7 @@ Byleth stalks away.
 ->InsultBattle.endBattle
 
 ==MakeHimLaugh
-
+PLAY_SFX(SFX_LAUGHTER)
 {Say(Buer)} You amuse me, little jester. I am amused. You have made me laugh this day.
 
 + [You have won the game!]

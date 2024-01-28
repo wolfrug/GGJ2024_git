@@ -22,10 +22,10 @@ Alas, Buer - your Dark Prince and long-term Employer, has grown bored and has de
 He expects to be amused as the factions of Hell vie for his favour, and as his Court Jester it is your tireless, thankless, truly awful task to make sure the event is as interesting as inhumanly possible.
 
 +Alas, you do not shoulder this burden alone.
-
+#clearMainWriter
 You share this task with your rival, your nemesis, and the thorn in your proverbial side ever since your youthful days of busking on banks of the river Styx.
 
-Pan (Pandemonium to her enemies) is your Master's favourite little bloodhound, and together your shall compete for every morsel of attention that your master doles out. So you'd better act fast.
+Pan (Pandemonium to her enemies) is your Master's favourite little bloodhound, and together you shall compete for every morsel of attention that your master doles out. So you'd better act fast.
 
 {Say(Rival)} Of course we could work together... 
 
@@ -36,7 +36,7 @@ Pan (Pandemonium to her enemies) is your Master's favourite little bloodhound, a
 ->tutorial
 
 ==tutorial
-
+#clearMainWriter
 {Say(Player)}{Background("None", "")}
 
 The party is underway, the plots are afoot, and rumours are rife. It's our job to sniff them out...together, you and me, and well...her.
@@ -93,7 +93,7 @@ Our mark is {currentTarget}.
 
 =selectRoom
 
-#showBets #updateRoomSelection
+{Background("None", "")} #showBets #updateRoomSelection 
 
 {attemptsLeft<2:
 
@@ -107,10 +107,10 @@ SET_STORY_TEXT(AttemptsLeft, {attemptsLeft})
 
 =roomEnd(room)
 
-#updateRoomSelection #clearWriter
+#updateRoomSelection #clearMainWriter
 
 {rumourRoom==room:
-
+PLAY_SFX(SFX_SUCCESS)
 {~This is it! You've found it! Haha! Let's see what's happening...|Oh, you're hearing something very juicy here...|Success! You found the rumour.}
 
 ->win
@@ -118,7 +118,7 @@ SET_STORY_TEXT(AttemptsLeft, {attemptsLeft})
 }
 
 {ContainsRumourRoom(room):
-
+PLAY_SFX(SFX_SUCCESS)
 {~Your sniffing around has brought results!|You feel yourself closing in on some yummy gossip.|Aha! Something is definitely afoot here.}
 
 {BonusRoomEliminationOnCorrectGuess()} 
@@ -126,8 +126,8 @@ SET_STORY_TEXT(AttemptsLeft, {attemptsLeft})
 ->CorrectBetEncounters->
 
 - else:
-
-{~No, this wasn't it. Damn.|No, it's not around here. But that's okay - process of elimination...|Nothing wagered, nothing gained. Still, it stings...}
+PLAY_SFX(SFX_FAILURE)
+{~No, this wasn't it. Damn.|No, it's not around here. But that's okay - process of elimination...|Nothing wagered, nothing gained. Still, it stings to lose…}
 
 }
 

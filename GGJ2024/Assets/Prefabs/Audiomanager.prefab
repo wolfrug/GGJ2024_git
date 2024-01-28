@@ -53,7 +53,8 @@ MonoBehaviour:
   m_music:
   - {fileID: 11400000, guid: 76b3f77c68e3e9c4796d05e259990904, type: 2}
   m_ambience: []
-  m_sfx: []
+  m_sfx:
+  - {fileID: 11400000, guid: beeaecadbbe247b428491cee3994ffef, type: 2}
   m_audioMixer: {fileID: 0}
   audioVolume: 1
   musicVolume: 1
@@ -254,7 +255,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
@@ -403,7 +404,7 @@ AudioSource:
   m_PlayOnAwake: 1
   m_Volume: 1
   m_Pitch: 1
-  Loop: 0
+  Loop: 1
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0

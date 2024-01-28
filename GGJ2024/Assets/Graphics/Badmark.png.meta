@@ -132,10 +132,10 @@ TextureImporter:
       name: Badmark_0
       rect:
         serializedVersion: 2
-        x: 53
-        y: 69
-        width: 177
-        height: 250
+        x: 60
+        y: 50
+        width: 124
+        height: 176
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,10 +153,10 @@ TextureImporter:
       name: Badmark_1
       rect:
         serializedVersion: 2
-        x: 407
-        y: 68
-        width: 177
-        height: 251
+        x: 226
+        y: 47
+        width: 127
+        height: 179
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}

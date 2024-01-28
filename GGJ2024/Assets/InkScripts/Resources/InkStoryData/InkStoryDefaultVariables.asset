@@ -25,6 +25,7 @@ MonoBehaviour:
   - variableName: CustomButton
   - variableName: LOSE_GAME
   - variableName: WIN_GAME
+  - variableName: PLAY_SFX
   m_sprites: []
   m_prefabs:
   - id: TextBox_Rival

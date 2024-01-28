@@ -65,13 +65,60 @@ public class GameManager : MonoBehaviour
         get;
     }
 
+     public void PlayMusic(InkDialogueLine line, InkTextVariable variable)
+    {
+        MusicType musicType = MusicType.NONE;
+        string targetMusicType = variable.VariableArguments[0];
+        System.Enum.TryParse<MusicType>(targetMusicType, out musicType);
+        if (musicType != MusicType.NONE)
+        {
+            AudioManager.Instance.PlayMusic(musicType, true);
+        }
+        else
+        {
+            Debug.Log("Could not find music of type " + targetMusicType);
+            AudioManager.Instance.PlayMusic(MusicType.NONE, true);
+        }
+    }
+    public void PlayAmbience(InkDialogueLine line, InkTextVariable variable)
+    {
+        AmbienceType ambienceType = AmbienceType.NONE;
+        string targetAmbienceType = variable.VariableArguments[0];
+        System.Enum.TryParse<AmbienceType>(targetAmbienceType, out ambienceType);
+        if (ambienceType != AmbienceType.NONE)
+        {
+            AudioManager.Instance.PlayAmbience(ambienceType, true);
+        }
+        else
+        {
+            Debug.Log("Could not find ambience of type " + targetAmbienceType);
+            AudioManager.Instance.PlayAmbience(AmbienceType.NONE, true);
+        }
+    }
+
+    public void PlaySFX(InkDialogueLine line, InkTextVariable variable)
+    {
+        SFXType sfxType = SFXType.NONE;
+        string targetSFXType = variable.VariableArguments[0];
+        System.Enum.TryParse<SFXType>(targetSFXType, out sfxType);
+        if (sfxType != SFXType.NONE)
+        {
+            AudioManager.Instance.PlaySFX(sfxType);
+        }
+        else
+        {
+            Debug.Log("Could not find SFX of type " + targetSFXType);
+        }
+    }
+
+
     public void EndGameWin()
     {
         m_inkstorydata.ClearSavedStory();
-        SceneManager.LoadScene("EndGame_Win");
+        SceneManager.LoadScene("EndScene_Win");
     }
     public void EndGameLose(){
         m_inkstorydata.ClearSavedStory();
-        SceneManager.LoadScene("EndGame_Lose"); 
+        SceneManager.LoadScene("EndScene_Lose"); 
     }
 }

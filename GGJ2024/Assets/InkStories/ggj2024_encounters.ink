@@ -67,9 +67,9 @@ VAR rivalApproval = 0
 {fromEndOfBattle: You decide to step by the bar before starting.|You abscond to the bar to catch your breath.} The barfly regards you with a thousand faceted eyes.
 
 // This list is non-random and not looping currently. Barfly could technically comment on your hunt, your success, whatever, but...
-{->Talk1->|->Talk2->}
-/*{->Talk1->|->Talk2->|->Talk3->|->Talk4->|->Talk5->|->Talk6->|->Talk7->|->Talk8->|->Talk9->|->Talk10->|->Talk11->|->Talk12->|->FinalTalk->}
-*/
+
+{->Talk1->|->Talk2->|->Talk3->|->Talk4->|->FinalTalk->}
+
 {Say(Player)} Well, it's been fun. Time to get back to it!
 
 ->->
@@ -128,16 +128,6 @@ He's suprisingly stealthy for a giant terrifying lion head surrounded by eldritc
 
 You return to the bar, a little wearier, a little wiser. 
 
-Now that you have had another look at him the Barfly does look awfully familiar. Could it be that you've seen him at another party somewhere? Lesser demons come and go, but perhaps... No, a Greater Demon wouldn't be tending the bar in a place like this...surely.
-
-*[Greet the Barfly.]
-
-{Say(Player)} "Greetings friend, how goes the evening?"
-
-{Portrait(Barfly)} The Barfly gives a noncommittal shrug with one of his many shoulders.
-
-{Say(Player)} "Say no more, friend. We understand one another completely."
-
 *[Greet your Nemesis.]
 
 You spot her a few stools down, nursing something bright and poisonous looking in a tall martini glass. No bilge water for Miss Pandemonium. No sir. 
@@ -150,15 +140,15 @@ You spot her a few stools down, nursing something bright and poisonous looking i
 
 {Say(Rival)}"Please, I think you'll find that I was here first."
 
-{Say(Barfly)}"AHEM." The Barfly levels you with a look - or does he, it's really quite hard to tell, and resumes wiping the bar with a dirty rag.
+{Say(Barfly)}"AHEM." The Barfly levels you with a look - or does he? It's really quite hard to tell, and resumes wiping the bar with a dirty rag.
 
 Both you and Pandemonium get the hint, and lower your heads like chastised children. No arguing at the Bar, got it.
 
-***"Guess I'll see you later then?"
+**"Guess I'll see you later then?"
 
-{Say(Rival)} Pan smirks, and downs the rest of her drink. "Indeed. And put in some effort this time will you, it's MEANT to be a competition."
+{Say(Rival)} Pan smirks, and downs the rest of her drink. 
 
-- {Say(Player)} "Oh well, guess it's time to get back out there!"
+"Indeed. And put in some effort this time will you, it's MEANT to be a competition."
 
 ->->
 
@@ -168,7 +158,7 @@ You are taking a break by the bar when you notice a suspicious figure lurking ne
 
 * [Signal them over.]
 
-snakeApproval++
+~snakeApproval++
 
 {Portrait(Marchosias)}
 
@@ -176,7 +166,7 @@ snakeApproval++
 
  It quickly becomes clear that Serpent House wishes to make an alliance. Their envoy isn't much of a negotiator, but what he lacks in acumen he makes up for with fluffiness. 
 
-{Say(Marchosias)} "So what do you say? Are you willing to turn a blind eye here and elevate us in Lord Buer's favour?"
+{Portrait(Marchosias)} "So what do you say? Are you willing to turn a blind eye here and elevate us in Lord Buer's favour?"
 
 ** [Sure!] After all why not. Why shouldn't you say yes to this nice fluffy demon. It's not like it will hurt anyone. 
 
@@ -192,19 +182,19 @@ Marchosias seems a bit ruffled, but he hands over a bribe as requested. You feel
 
 Mmm, delicious.
 
-~confidence += 50 
+~confidence+= 50 
 
 ~snakeApproval++
 
 ** [Reject the offer.] He's awfully eager, so you try to let him down gently. You give him a lot of spiel about company loyalty, fearing for you life, and besmirching the honour of jesters. He laps it all up.
 
-   {Say(Marchosias)} "Say no more. I understand completely." 
+   {Portrait(Marchosias)} "Say no more. I understand completely." 
 
     Marchosias leaves the bar, ears flattened with dejection. Pity, he seemed like such a good boy. You hope Asteroth won't treat his failure too badly.
 
 * [{ReqConfidence(50)} Ignore this nonsense.]
 
-~confidence =- 50 
+~confidence-= 50 
 
 "I'm not in the market today for any snake-oil salesman spiel,.Please move along."
 
@@ -220,69 +210,67 @@ For whatever reason, this tactic seems to work, and the figure depart looking a 
 
 =Talk4
 
-->->
+Ah, at last sweet rest.
 
-=Talk5
+The Barfly approaches and silently hands over a glass of "water".
 
-->->
+{Say(Barfly)} "I noticed that Serpent House representative lurking around last time. Perhaps you'd also be willing to hear out a humble fly?"
 
-=Talk6
-
-->->
-
-=Talk7
-
-->->
-
-=Talk8
-
-->->
-
-=Talk9
-
-->->
-
-=Talk10
-
-->->
-
-=Talk11
-
-->->
-
-=Talk12
-
-This is an example, please delete or comment out.
-
-* [{ReqConfidence(50)} This option will be greyed out in-game if you do not have at least 50 confidence.]
-
-~confidence =- 50 
-
-We remove confidence and then do fun things.
-
-* [Regular option.]
-
-Other stuff.
-
-* [{ReqFlyApproval(0)} We use the same syntax, even if all we do is increase approval...]
+* [Accept his offer]
 
 ~flyApproval++
 
-We've now increased fly approval I guess! 
+You have the time, so why not. The Barfly sidles closer, leaning his imposing bulk upon the bar.
 
-* [{ReqSnakeApproval(0)} We use the same syntax, even if all we do is increase approval...]
+  
+
+He is clearly experienced when it comes to coercion. Before you know it you are halfway through a deal to become a secret double agent for the Order of Flies. 
+
+You tear your gaze away from the wall of glittering black before you. What is this, hypnotism?
+
+{Say(Barfly)} "So what'll it be? Are you with us... or against us?"
+
+** [Yes.] Somehow you get the feeling that saying no to his offer would be an all-round bad idea. You flash a sickly smile and shake his clasped antennae to seal the deal. 
+
+~flyApproval++
+
+** [{ReqConfidence(50)} Sure, for a price.] 
+
+You must have nerves of steel to be asking a demon like this for a bribe - that or you really are a fool. 
+
+But when you make your proposal the Barfly merely regards you for one glittering, lengthy moment, then rubs his forelegs together with a satisfied smile.
+
+As he hands the items to you under the counter you feel a surge of Confidence, as though you've just narrowly avoided death.
+
+~confidence+=150
+
+~flyApproval++
+
+** [Reject the offer.] You feel like you're making a terrible mistake. But principles are principles, and a decision is a decision, and whether you're principled or decisive you're going to have to live with the consequences now.
+
+~flyApproval++
+
+* [{ReqConfidence(50)} Turn him down flatly.]
+
+~confidence-=50 
+
+He may have the buzz on all the latest happenings, but you are far too much on your plate as is. You tell him to buzz off - but politely.
+
+~flyApproval--
+
+* [{ReqSnakeApproval(2)} Reject the offer]  You've already chosen a serpent for this particular race.
 
 ~snakeApproval++
 
-We've now increased snake approval I guess! 
-
-- Gather!
+- 
 
 ->->
 
 =FinalTalk
 
-DEBUG: Move this talk up in the list and leave it as the final one if no other talks are forthcoming.
+//DEBUG: Move this talk up in the list and leave it as the final one if no other talks are forthcoming.
+
+You take a moment to catch your breath.
 
 ->->
 

@@ -192,6 +192,11 @@ LIST characters = NoCharacter, Player, Rival, Barfly, Marchosias
 }
 ~pay -= betConfidence
 ~betConfidence = 0
+{pay>0:
+PLAY_SFX(SFX_CASINOCHIP_UP)
+-else:
+PLAY_SFX(SFX_CASINOCHIP_DOWN)
+}
 ~return pay
 
 ===function ContainedRooms(room)===

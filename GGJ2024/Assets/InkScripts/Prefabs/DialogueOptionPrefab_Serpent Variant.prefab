@@ -9,7 +9,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 3171004303938060038, guid: c179a119a670abf4da4c601f7328669b, type: 3}
       propertyPath: m_Name
-      value: DialogueOptionPrefab_Serpent
+      value: DialogueOptionPrefab_Serpent Variant
       objectReference: {fileID: 0}
     - target: {fileID: 3171004303938060041, guid: c179a119a670abf4da4c601f7328669b, type: 3}
       propertyPath: m_Pivot.x

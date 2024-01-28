@@ -145,7 +145,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6947351404878739661, guid: e5ad77caf13dad746938b0e65f306d39, type: 3}
       propertyPath: m_Text
-      value: Beelzebub, The Barfly
+      value: Bub The Barfly
       objectReference: {fileID: 0}
     - target: {fileID: 6947351404878739661, guid: e5ad77caf13dad746938b0e65f306d39, type: 3}
       propertyPath: m_Color.b

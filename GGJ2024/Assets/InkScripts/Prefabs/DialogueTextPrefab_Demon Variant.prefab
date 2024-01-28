@@ -29,7 +29,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 4767027710511448164, guid: e5ad77caf13dad746938b0e65f306d39, type: 3}
       propertyPath: m_Name
-      value: DialogueTextPrefab_Demon
+      value: DialogueTextPrefab_Demon Variant
       objectReference: {fileID: 0}
     - target: {fileID: 4767027710511448168, guid: e5ad77caf13dad746938b0e65f306d39, type: 3}
       propertyPath: m_Color.b
