@@ -23,6 +23,8 @@ MonoBehaviour:
   - variableName: SET_STORY_IMAGE
   - variableName: SET_STORY_TEXT
   - variableName: CustomButton
+  - variableName: LOSE_GAME
+  - variableName: WIN_GAME
   m_sprites: []
   m_prefabs:
   - id: TextBox_Rival
@@ -31,3 +33,15 @@ MonoBehaviour:
     prefab: {fileID: 2236062166164031699, guid: 0b04ec8981d18934c8d3127f8973b328, type: 3}
   - id: TextBox_Demon
     prefab: {fileID: 8595358211192642352, guid: 2afac2a06ef54664f8fc1692c7ea90e1, type: 3}
+  - id: OptionBox_Confidence
+    prefab: {fileID: 3171004303938060038, guid: c179a119a670abf4da4c601f7328669b, type: 3}
+  - id: OptionBox_Fly
+    prefab: {fileID: 2852592039324003344, guid: 02909648ab4e1b741a80c38a5d09eaaf, type: 3}
+  - id: OptionBox_Snake
+    prefab: {fileID: 6390391097642592672, guid: 9c2e50af795781c45be09a63153d5059, type: 3}
+  - id: TextBox_Dracula
+    prefab: {fileID: 2380752874720968167, guid: c99d52e416d7f804095caddf1b1be02f, type: 3}
+  - id: TextBox_Buer
+    prefab: {fileID: 7498291780042687390, guid: 7dbd28ac2d20bc044b830a337a8f36d4, type: 3}
+  - id: TextBox_Barfly
+    prefab: {fileID: 8620654947659549004, guid: 9379f18946b15e14fbc4197de8fb4211, type: 3}

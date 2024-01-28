@@ -25,19 +25,28 @@ VAR readyToInsult = false
 -Dracula:
 
 ~Dracula_Rumours++
-
+{LIST_MAX(LIST_ALL(Dracula_Rumours))==Dracula_Rumours:
+~readyToInsult = true
+}
 -Astaroth:
 
 ~Astaroth_Rumours++
-
+{LIST_MAX(LIST_ALL(Astaroth_Rumours))==Astaroth_Rumours:
+~readyToInsult = true
+}
 -Naberius:
 
 ~Naberius_Rumours++
+{LIST_MAX(LIST_ALL(Naberius_Rumours))==Naberius_Rumours:
+~readyToInsult = true
+}
 
 -Byleth:
 
 ~Byleth_Rumours++
-
+{LIST_MAX(LIST_ALL(Byleth_Rumours))==Byleth_Rumours:
+~readyToInsult = true
+}
 }
 
 ==TargetBio(target)

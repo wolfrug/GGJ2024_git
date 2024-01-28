@@ -79,7 +79,7 @@ MonoBehaviour:
   m_FillClockwise: 1
   m_FillOrigin: 0
   m_UseSpriteMesh: 0
-  m_PixelsPerUnitMultiplier: 1.61
+  m_PixelsPerUnitMultiplier: 6.3
 --- !u!114 &4395401879910748384
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -139,8 +139,8 @@ MonoBehaviour:
   m_Padding:
     m_Left: 0
     m_Right: 0
-    m_Top: 33
-    m_Bottom: 39
+    m_Top: 7
+    m_Bottom: 3
   m_ChildAlignment: 0
   m_Spacing: 0
   m_ChildForceExpandWidth: 1
@@ -200,8 +200,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 343.04, y: 0}
-  m_SizeDelta: {x: 686.08, y: 0}
+  m_AnchoredPosition: {x: 266.98926, y: 0}
+  m_SizeDelta: {x: 533.979, y: 0}
   m_Pivot: {x: 0.5, y: 0.9999998}
 --- !u!222 &3390573452317537061
 CanvasRenderer:
@@ -296,7 +296,7 @@ MonoBehaviour:
   m_VertexBufferAutoSizeReduction: 0
   m_useMaxVisibleDescender: 1
   m_pageToDisplay: 1
-  m_margin: {x: 44.4162, y: 9.42429, z: 9.424347, w: 9.4242935}
+  m_margin: {x: 15.342819, y: 4.578675, z: 9.424225, w: 9.4242935}
   m_isUsingLegacyAnimationComponent: 0
   m_isVolumetricText: 0
   m_hasFontAssetChanged: 0

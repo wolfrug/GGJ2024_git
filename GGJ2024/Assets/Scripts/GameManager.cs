@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
+using InkEngine;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 
 [System.Serializable]
 public class GameStateChanged : UnityEvent<GameState> { }
@@ -33,6 +35,7 @@ public class GameState
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
+    public InkStoryData m_inkstorydata;
     public List<GameState> m_gameStates = new List<GameState> { };
 
     void Awake()
@@ -60,5 +63,15 @@ public class GameManager : MonoBehaviour
     {
         set;
         get;
+    }
+
+    public void EndGameWin()
+    {
+        m_inkstorydata.ClearSavedStory();
+        SceneManager.LoadScene("EndGame_Win");
+    }
+    public void EndGameLose(){
+        m_inkstorydata.ClearSavedStory();
+        SceneManager.LoadScene("EndGame_Lose"); 
     }
 }

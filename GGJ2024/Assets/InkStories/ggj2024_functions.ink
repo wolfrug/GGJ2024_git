@@ -14,7 +14,7 @@ VAR confidence = 100
 VAR betConfidence = 0
 VAR maxBet = 100
 
-LIST characters = NoCharacter, Player, Rival
+LIST characters = NoCharacter, Player, Rival, Barfly, Marchosias
 
 ===function SetRandomRumourRoom()===
 ~rumourRoom = (R1, R2, R3, R4, R5, R6, R7, R8, R9, R10, R11, R12, R13, R14, R15, R16, R17, R18, R19, R20, R21, R22, R23, R24, R25, R26, R27, R28, R29, R30, R31, R32, R33, R34, R35, R36)
@@ -245,6 +245,11 @@ SET_STORY_TEXT(Name, {name})
 SET_TEXTBOX(TextBox_{character})
 
 ===function Background(background, name)===
+{background=="None":
+SET_STORY_IMAGE(Blocker, "")
+- else:
+SET_STORY_IMAGE(Blocker, Blocker)
+}
 SET_STORY_IMAGE(Background, {background})
 SET_STORY_TEXT(LocationName, {name})
 
@@ -310,3 +315,15 @@ SET_STORY_TEXT(ConfidenceAmount, {confidence}<br>{betConfidence} [Max: {maxBet}]
 =addRoom(targetRoom, ->continuePoint)
 + [INTERACTABLE({not (eliminatedRooms?targetRoom)}){SelectRoom(targetRoom)} {targetRoom}!]
 ->continuePoint(targetRoom)
+
+===function ReqConfidence(amount)
+SET_OPTIONBOX(OptionBox_Confidence)
+INTERACTABLE({confidence>=amount})
+
+===function ReqFlyApproval(amount)
+SET_OPTIONBOX(OptionBox_Fly)
+INTERACTABLE({flyApproval>=amount})
+
+===function ReqSnakeApproval(amount)
+SET_OPTIONBOX(OptionBox_Snake)
+INTERACTABLE({snakeApproval>=amount})
